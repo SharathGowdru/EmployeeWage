@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EmpMaxHours
+namespace EmployeeWage
 {
     class Program
     {
@@ -9,36 +9,39 @@ namespace EmpMaxHours
         public const int EMP_RATE_PER_HOUR = 20;
         public const int NUM_OF_WORKING_DAYS = 20;
         public const int MAX_HRS_IN_MONTH = 100;
-        static void Main(string[] args)
-        {
 
+        public static void calculateEmployee()
+        {
+            Console.WriteLine("Welcome to the Employee Wage Computation Program using C#");
+            int totalEmpWage = 0;
             int empHrs = 0;
-            int totalempHrs = 0;
+            int totalEmpHrs = 0;
             int totalWorkingDays = 0;
-            while (totalempHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS)
+            while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS)
             {
                 totalWorkingDays++;
                 Random random = new Random();
                 int empCheck = random.Next(0, 3);
                 switch (empCheck)
                 {
-                    case IS_FULL_TIME:
+                    case 1:
                         empHrs = 8;
                         break;
-                    case IS_PART_TIME:
+                    case 2:
                         empHrs = 4;
                         break;
                     default:
                         empHrs = 0;
                         break;
                 }
-                totalempHrs += empHrs;
-                Console.WriteLine("Day#:" + totalWorkingDays + "Emp Hours" + empHrs);
+                totalEmpHrs += empHrs;
             }
-            int totalEmpWage = totalempHrs * EMP_RATE_PER_HOUR;
-            Console.WriteLine("Total Emp Wage : " + totalEmpWage);
+            totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
+            Console.WriteLine("\n" + "The total Monthly Employee Wage is :" + totalEmpWage);
+        }
+        public static void Main(string[] args)
+        {
+            calculateEmployee();
         }
     }
 }
-   
-
